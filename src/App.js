@@ -1,19 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import { TaskCreator } from "./components/TaskCreator";
 
 function App() {
-  const [tasksItems, setTasksItems] = useState([
-    { name: "my first task", done: false },
-    { name: "my second task", done: false },
-    { name: "my third task", done: false },
-  ]);
+  const [tasksItems, setTasksItems] = useState([]);
 
   function createNewTask(taskName) {
     if (!tasksItems.find((task) => task.name === taskName)) {
       setTasksItems([...tasksItems, { name: taskName, done: false }]);
     }
   }
+
+  useEffect(() => {
+    const data = localStorage.getItem("tasks");
+    if (data) {
+      setTasksItems(JSON.parse(data));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasksItems));
+  }, [tasksItems]);
 
   return (
     <div className="App">
