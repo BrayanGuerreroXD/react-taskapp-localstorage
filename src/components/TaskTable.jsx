@@ -1,4 +1,4 @@
-export const TaskTable = ({tasks}) => {
+export const TaskTable = ({ tasks }) => {
   return (
     <table>
       <thead>
@@ -9,7 +9,10 @@ export const TaskTable = ({tasks}) => {
       <tbody>
         {tasks.map((task) => (
           <tr key={task.name}>
-            <td>{task.name}</td>
+            <td>
+              {task.name}
+              <input type="checkbox" value={task.done} />
+            </td>
           </tr>
         ))}
       </tbody>
