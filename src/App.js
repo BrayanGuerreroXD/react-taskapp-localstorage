@@ -35,6 +35,7 @@ function App() {
     <div className="App">
       <TaskCreator createNewTask={createNewTask} />
       <TaskTable tasks={tasksItems} toglleTask={toggleTask}/>
+      <TaskTable tasks={tasksItems} toglleTask={toggleTask} showCompleted={true}/>
     </div>
   );
 }
