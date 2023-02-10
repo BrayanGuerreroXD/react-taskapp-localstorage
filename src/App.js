@@ -12,6 +12,14 @@ function App() {
     }
   }
 
+  const toggleTask = (task) => {
+    setTasksItems(
+      tasksItems.map((t) =>
+        t.name === task.name ? { ...t, done: !t.done } : t
+      )
+    );
+  };
+
   useEffect(() => {
     const data = localStorage.getItem("tasks");
     if (data) {
@@ -26,7 +34,7 @@ function App() {
   return (
     <div className="App">
       <TaskCreator createNewTask={createNewTask} />
-      <TaskTable tasks = {tasksItems}/>
+      <TaskTable tasks={tasksItems} toglleTask={toggleTask}/>
     </div>
   );
 }
