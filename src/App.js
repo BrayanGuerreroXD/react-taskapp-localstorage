@@ -40,21 +40,23 @@ function App() {
 
   return (
     <div className="App">
-      <TaskCreator createNewTask={createNewTask} />
-      <TaskTable tasks={tasksItems} toggleTask={toggleTask} />
-      <VisibilityControl
-        isChecked={showCompleted}
-        setShowCompleted={(checked) => setShowCompleted(checked)}
-        cleanTasks={cleanTasks}
-      />
-
-      {showCompleted === true && (
-        <TaskTable
-          tasks={tasksItems}
-          toggleTask={toggleTask}
-          showCompleted={showCompleted}
+      <div className="container">
+        <TaskCreator createNewTask={createNewTask} />
+        <TaskTable tasks={tasksItems} toggleTask={toggleTask} />
+        <VisibilityControl
+          isChecked={showCompleted}
+          setShowCompleted={(checked) => setShowCompleted(checked)}
+          cleanTasks={cleanTasks}
         />
-      )}
+
+        {showCompleted === true && (
+          <TaskTable
+            tasks={tasksItems}
+            toggleTask={toggleTask}
+            showCompleted={showCompleted}
+          />
+        )}
+      </div>
     </div>
   );
 }
